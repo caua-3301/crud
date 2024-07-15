@@ -16,5 +16,15 @@ module.exports = {
         }
 
         res.json(content_response);
+    },
+
+    getOne: async (req, res) => {
+        let content_response = {error: '', result: []};
+        let id_car = req.params.id;
+        let car_selected = await carService.getOneCar(id_car);
+
+        content_response.result.push(car_selected);
+
+        res.json(content_response);
     }
 }
