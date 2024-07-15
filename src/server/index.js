@@ -1,4 +1,6 @@
 require('dotenv').config();
+const bodyParser = require('body-parser');
+
 
 const express = require('express');
 const app = express();
@@ -8,8 +10,7 @@ const routes = require('../routes/index.js');
 
 app.use(cors());
 //is like body-parser, make a test in this file of config/server
-app.use(express.json());
-
+app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', routes);
 
 app.listen(process.env.PORT, () => {
